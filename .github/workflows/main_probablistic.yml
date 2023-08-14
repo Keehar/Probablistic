@@ -21,14 +21,8 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Navigate to the Probablistic directory
-        run: cd Probablistic
-
       - name: Build with Maven
-        run: mvn clean install
-
-      - name: Navigate back to the root directory
-        run: cd ..
+        run: mvn -f ${{ github.workspace }}/Probablistic/pom.xml clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2

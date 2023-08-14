@@ -21,14 +21,20 @@ jobs:
         with:
           java-version: '17'
 
+      - name: Navigate to the Probablistic directory
+        run: cd Probablistic
+
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Navigate back to the root directory
+        run: cd ..
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/Probablistic/target/*.jar'
 
   deploy:
     runs-on: windows-latest
